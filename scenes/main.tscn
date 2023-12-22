@@ -1,0 +1,1009 @@
+[gd_scene load_steps=102 format=3 uid="uid://d46wrkgdeynk"]
+
+[ext_resource type="Script" path="res://scripts/initialize.gd" id="1_xecma"]
+[ext_resource type="Script" path="res://scripts/spatial_menu.gd" id="2_2iin7"]
+[ext_resource type="Script" path="res://scripts/grabber.gd" id="2_3x1tw"]
+[ext_resource type="Script" path="res://scenes/InfoMenu.gd" id="2_8yciy"]
+[ext_resource type="PackedScene" uid="uid://dw2kfbg15qqeu" path="res://controllers/controller_l.fbx" id="3_y2kpf"]
+[ext_resource type="PackedScene" uid="uid://doel0ns5nc6bm" path="res://controllers/controller_r.fbx" id="4_5ti0a"]
+[ext_resource type="Script" path="res://scenes/Bowling Ball.gd" id="5_b5swy"]
+[ext_resource type="Script" path="res://scripts/laser_pointer.gd" id="5_plr77"]
+[ext_resource type="Script" path="res://scenes/Big Ball.gd" id="6_72kbm"]
+[ext_resource type="PackedScene" uid="uid://bgns682fqplyu" path="res://assets/bowling_pin.glb" id="6_qfyl3"]
+[ext_resource type="Texture2D" uid="uid://dah88b1bx4ymg" path="res://assets/bowling_ball_01_0.png" id="9_moivn"]
+[ext_resource type="Texture2D" uid="uid://bap03q6thddmw" path="res://assets/bowling_alley_floor_texture_0.png" id="11_hevsh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kmep5"]
+size = Vector3(4, 2, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hpgk2"]
+viewport_path = NodePath("InfoMenu/PlaneMesh/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpoju"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_hpgk2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_740mo"]
+size = Vector2(4, 2)
+
+[sub_resource type="Theme" id="Theme_1fwww"]
+default_font_size = 70
+
+[sub_resource type="Theme" id="Theme_xj4hx"]
+default_font_size = 70
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fjijl"]
+size = Vector3(0, 1.5, 0)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6vxrx"]
+radius = 0.06
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78erl"]
+size = Vector3(2, 1.5, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dngdo"]
+viewport_path = NodePath("XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_amsol"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_dngdo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5h83y"]
+size = Vector2(2, 1.5)
+
+[sub_resource type="Theme" id="Theme_gnvn0"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_ipdtj"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_3an4e"]
+default_font_size = 50
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrbsg"]
+shading_mode = 0
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wfv6v"]
+material = SubResource("StandardMaterial3D_jrbsg")
+size = Vector3(0.004, 0.004, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_osj4q"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_noqmy"]
+sky_material = SubResource("ProceduralSkyMaterial_osj4q")
+
+[sub_resource type="Environment" id="Environment_pi0m0"]
+background_mode = 2
+sky = SubResource("Sky_noqmy")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7ujab"]
+friction = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xp8y"]
+albedo_texture = ExtResource("9_moivn")
+
+[sub_resource type="SphereMesh" id="SphereMesh_bv1ix"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg2cd"]
+albedo_color = Color(0.317647, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_plj4f"]
+radius = 0.15
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_acl56"]
+friction = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_kcpmb"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywgmd"]
+albedo_color = Color(0.85098, 0.27451, 0.407843, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2ujm3"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hs0b3"]
+albedo_color = Color(0.541176, 0.552941, 0.34902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ctux"]
+material = SubResource("StandardMaterial3D_hs0b3")
+size = Vector3(0.5, 1, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wea8p"]
+size = Vector3(0.5, 1, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yx00f"]
+material = SubResource("StandardMaterial3D_hs0b3")
+size = Vector3(0.5, 1, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dj3iy"]
+size = Vector3(0.5, 1, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqi2o"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pqhc4"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 1.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6u8d6"]
+height = 1.2
+radius = 0.025
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rwdp"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blg2k"]
+top_radius = 0.03
+bottom_radius = 0.06
+height = 0.38
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ingp2"]
+height = 0.38
+radius = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7kkm"]
+albedo_texture = ExtResource("11_hevsh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gkx18"]
+size = Vector2(5, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6niq"]
+size = Vector3(5, 1, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh0fp"]
+albedo_texture = ExtResource("11_hevsh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a8whk"]
+size = Vector2(0.9, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trsr2"]
+size = Vector3(1, 1, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6omb2"]
+material = SubResource("StandardMaterial3D_hs0b3")
+size = Vector3(0.2, 4, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nrac6"]
+size = Vector3(0.2, 4, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m4521"]
+material = SubResource("StandardMaterial3D_hs0b3")
+size = Vector3(0.2, 4, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ufqgv"]
+material = SubResource("StandardMaterial3D_hs0b3")
+size = Vector3(6, 4, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dcwhk"]
+size = Vector3(7, 4, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15p4j"]
+albedo_color = Color(0.541176, 0.552941, 0.34902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_llu5k"]
+size = Vector3(1.5, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2qibt"]
+size = Vector3(1.5, 4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbw08"]
+albedo_color = Color(0.541176, 0.552941, 0.34902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jd0rr"]
+size = Vector3(1.5, 4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h67ih"]
+albedo_color = Color(0.541176, 0.552941, 0.34902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6hebe"]
+size = Vector3(2.2, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_triy6"]
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5ggy"]
+albedo_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k83jv"]
+size = Vector3(0.1, 0.3, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf3yx"]
+size = Vector3(0.1, 0.3, 18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmll7"]
+albedo_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqxy5"]
+albedo_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n1clv"]
+size = Vector3(0.1, 0.6, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qg1y"]
+size = Vector3(0.1, 0.6, 18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4pq7"]
+albedo_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jylac"]
+size = Vector3(0.1, 0.6, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ee36j"]
+size = Vector3(0.1, 0.6, 18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4o0oy"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lx0bk"]
+size = Vector2(0.4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kef8o"]
+size = Vector3(0.4, 1, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txc7u"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ht6f7"]
+size = Vector2(0.4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gm6me"]
+size = Vector3(0.4, 1, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbt4k"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nvk7m"]
+size = Vector2(0.4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b3umr"]
+size = Vector3(0.4, 1, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkkia"]
+albedo_color = Color(0.286275, 0.286275, 0.286275, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7vl12"]
+size = Vector2(0.4, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5adxk"]
+size = Vector3(0.4, 1, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36gyg"]
+albedo_texture = ExtResource("11_hevsh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fs34l"]
+size = Vector2(1.5, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yxptl"]
+size = Vector3(1.5, 1, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nm3d"]
+albedo_texture = ExtResource("11_hevsh")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1towq"]
+size = Vector2(1.5, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnlgx"]
+size = Vector3(1.5, 1, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_imjca"]
+size = Vector3(1, 0.005, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e3hwh"]
+size = Vector3(1, 0.005, 0.5)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_xecma")
+
+[node name="InfoMenu" type="Area3D" parent="." groups=["spatial_menus"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -19.94)
+script = ExtResource("2_8yciy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InfoMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+shape = SubResource("BoxShape3D_kmep5")
+
+[node name="PlaneMesh" type="MeshInstance3D" parent="InfoMenu"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_gpoju")
+mesh = SubResource("PlaneMesh_740mo")
+skeleton = NodePath("")
+
+[node name="SubViewport" type="SubViewport" parent="InfoMenu/PlaneMesh"]
+size = Vector2i(1100, 650)
+
+[node name="ColorRect" type="ColorRect" parent="InfoMenu/PlaneMesh/SubViewport"]
+custom_minimum_size = Vector2(2000, 2000)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.0509804, 0.0235294, 0, 0.592157)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="InfoMenu/PlaneMesh/SubViewport"]
+
+[node name="StrikesLabel" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_left = 77.0
+offset_top = 79.0
+offset_right = 475.0
+offset_bottom = 183.0
+theme = SubResource("Theme_1fwww")
+text = "Total Strikes:"
+
+[node name="Strikes" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer/StrikesLabel"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 2.0
+offset_right = 531.0
+offset_bottom = 101.0
+theme = SubResource("Theme_xj4hx")
+text = "0"
+
+[node name="ThrowLabel" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_left = 79.0
+offset_top = 219.0
+offset_right = 570.0
+offset_bottom = 323.0
+theme = SubResource("Theme_1fwww")
+text = "Pins Knocked Down:"
+
+[node name="Pins" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer/ThrowLabel"]
+layout_mode = 0
+offset_left = 711.0
+offset_right = 773.0
+offset_bottom = 99.0
+theme = SubResource("Theme_xj4hx")
+text = "0"
+
+[node name="BallSizeLabel" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_left = 85.0
+offset_top = 357.0
+offset_right = 483.0
+offset_bottom = 461.0
+theme = SubResource("Theme_1fwww")
+text = "Size of Ball:"
+
+[node name="Size" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer/BallSizeLabel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = -2.0
+offset_right = 470.0
+offset_bottom = 97.0
+text = "0"
+
+[node name="measure" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer/BallSizeLabel"]
+layout_mode = 0
+offset_left = 571.0
+offset_top = -6.0
+offset_right = 638.0
+offset_bottom = 93.0
+theme = SubResource("Theme_xj4hx")
+text = "cm"
+
+[node name="WeightSizeLabel" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_left = 92.0
+offset_top = 497.0
+offset_right = 490.0
+offset_bottom = 601.0
+theme = SubResource("Theme_1fwww")
+text = "Weight of Ball:"
+
+[node name="Weight" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer/WeightSizeLabel"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 5.0
+offset_right = 574.0
+offset_bottom = 104.0
+theme = SubResource("Theme_xj4hx")
+text = "0"
+
+[node name="measure" type="Label" parent="InfoMenu/PlaneMesh/SubViewport/CanvasLayer/WeightSizeLabel"]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 1.0
+offset_right = 717.0
+offset_bottom = 100.0
+theme = SubResource("Theme_xj4hx")
+text = "kg"
+
+[node name="XRUser" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.163543)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRUser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_fjijl")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="XRUser"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XRUser/XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="LeftController" type="XRController3D" parent="XRUser/XROrigin3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.4, -0.4)
+tracker = &"left_hand"
+pose = &"aim"
+script = ExtResource("2_3x1tw")
+
+[node name="LeftControllerMesh" parent="XRUser/XROrigin3D/LeftController" instance=ExtResource("3_y2kpf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.05)
+
+[node name="Area3D" type="Area3D" parent="XRUser/XROrigin3D/LeftController"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -0.007, 0, 0.075)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRUser/XROrigin3D/LeftController/Area3D"]
+shape = SubResource("SphereShape3D_6vxrx")
+
+[node name="SpatialMenu" type="Area3D" parent="XRUser/XROrigin3D/LeftController" groups=["spatial_menus"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.1, -1.1)
+visible = false
+script = ExtResource("2_2iin7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRUser/XROrigin3D/LeftController/SpatialMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+shape = SubResource("BoxShape3D_78erl")
+
+[node name="PlaneMesh" type="MeshInstance3D" parent="XRUser/XROrigin3D/LeftController/SpatialMenu"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_amsol")
+mesh = SubResource("PlaneMesh_5h83y")
+skeleton = NodePath("")
+
+[node name="SubViewport" type="SubViewport" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh"]
+size = Vector2i(1100, 650)
+
+[node name="ColorRect" type="ColorRect" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport"]
+custom_minimum_size = Vector2(2000, 2000)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.611765, 0.396078, 1, 0.592157)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport"]
+
+[node name="BumpersButton" type="Button" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_top = 33.0
+offset_right = 1150.0
+offset_bottom = 150.0
+theme = SubResource("Theme_gnvn0")
+text = "Toggle Bumpers"
+
+[node name="AllButton" type="Button" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -141.0
+offset_right = 1153.0
+offset_bottom = -24.0
+grow_vertical = 2
+theme = SubResource("Theme_ipdtj")
+text = "Reset All"
+
+[node name="PinsButton" type="Button" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_left = -1.0
+offset_top = 337.0
+offset_right = 1153.0
+offset_bottom = 454.0
+theme = SubResource("Theme_3an4e")
+text = "Reset Pins"
+
+[node name="BallsButton" type="Button" parent="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer"]
+offset_left = 1.0
+offset_top = 485.0
+offset_right = 1152.0
+offset_bottom = 602.0
+theme = SubResource("Theme_gnvn0")
+text = "Reset Balls"
+
+[node name="RightController" type="XRController3D" parent="XRUser/XROrigin3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.4, -0.4)
+tracker = &"right_hand"
+pose = &"aim"
+script = ExtResource("2_3x1tw")
+
+[node name="Area3D" type="Area3D" parent="XRUser/XROrigin3D/RightController"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0.00679812, 0, 0.075)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRUser/XROrigin3D/RightController/Area3D"]
+shape = SubResource("SphereShape3D_6vxrx")
+
+[node name="RightControllerMesh" parent="XRUser/XROrigin3D/RightController" instance=ExtResource("4_5ti0a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.05)
+
+[node name="LaserPointer" type="MeshInstance3D" parent="XRUser/XROrigin3D/RightController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+mesh = SubResource("BoxMesh_wfv6v")
+script = ExtResource("5_plr77")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pi0m0")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965603, 0.226234, -0.128177, -0.151762, 0.890619, 0.42868, 0.211139, -0.394483, 0.894318, -0.924272, 7.60762, -18.9223)
+shadow_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.956035, 0.293198, 0.00561799, -0.135864, 0.425874, 0.894523, 0.25988, -0.855959, 0.446986, 0, 2.88547, 0.542334)
+shadow_enabled = true
+
+[node name="Big Ball" type="RigidBody3D" parent="." groups=["grabbable"]]
+transform = Transform3D(0.5, -0.866025, -8.74228e-08, -0.866025, -0.5, 0, -4.37114e-08, 7.57103e-08, -1, 1.1, 0.8, -0.95)
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_7ujab")
+script = ExtResource("6_72kbm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Big Ball"]
+material_override = SubResource("StandardMaterial3D_1xp8y")
+mesh = SubResource("SphereMesh_bv1ix")
+surface_material_override/0 = SubResource("StandardMaterial3D_qg2cd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Big Ball"]
+shape = SubResource("SphereShape3D_plj4f")
+
+[node name="Bowling Ball" type="RigidBody3D" parent="." groups=["grabbable"]]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 1.15, 0.7, -0.5)
+visible = false
+mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_acl56")
+script = ExtResource("5_b5swy")
+
+[node name="SphereMesh" type="MeshInstance3D" parent="Bowling Ball"]
+mesh = SubResource("SphereMesh_kcpmb")
+skeleton = NodePath("../../Layout/Main Ground/CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_ywgmd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Ball"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.35189e-23, 0, -8.35188e-23, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_2ujm3")
+
+[node name="Bowlingball Holder" type="Node3D" parent="."]
+
+[node name="Left Side" type="StaticBody3D" parent="Bowlingball Holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15515, 0.235887, -1.35185)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowlingball Holder/Left Side"]
+mesh = SubResource("BoxMesh_8ctux")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowlingball Holder/Left Side"]
+shape = SubResource("BoxShape3D_wea8p")
+
+[node name="Right Side" type="StaticBody3D" parent="Bowlingball Holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15515, 0.235887, -0.190277)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowlingball Holder/Right Side"]
+mesh = SubResource("BoxMesh_yx00f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowlingball Holder/Right Side"]
+shape = SubResource("BoxShape3D_dj3iy")
+
+[node name="Bar" type="StaticBody3D" parent="Bowlingball Holder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.21783, 0.650055, -0.751221)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowlingball Holder/Bar"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0.0226853, 0)
+material_override = SubResource("StandardMaterial3D_bqi2o")
+mesh = SubResource("CylinderMesh_pqhc4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowlingball Holder/Bar"]
+shape = SubResource("CylinderShape3D_6u8d6")
+
+[node name="Bar2" type="StaticBody3D" parent="Bowlingball Holder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.02567, 0.650055, -0.751221)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowlingball Holder/Bar2"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 3.55271e-15, 1, 0, 0.0226853, 0)
+material_override = SubResource("StandardMaterial3D_6rwdp")
+mesh = SubResource("CylinderMesh_pqhc4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowlingball Holder/Bar2"]
+shape = SubResource("CylinderShape3D_6u8d6")
+
+[node name="Bowling Pins" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -18)
+
+[node name="Bowling Pin 1" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.2, -2.5)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 1" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 1"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 1"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 1"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 2" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.2, -2.5)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 2" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 2"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 2"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 2"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 3" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -2.5)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 3" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 3"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 3"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 3"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 4" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.2, -2.5)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 4" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 4"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 4"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 4"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 5" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.2, -2.35)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 5" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 5"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 5"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 5"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 6" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.2, -2.35)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 6" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 6"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 6"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 6"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 7" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.2, -2.35)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 7" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 7"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 7"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 7"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 8" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.2, -2.2)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 8" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 8"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 8"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 8"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 9" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0.2, -2.2)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 9" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 9"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 9"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 9"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Bowling Pin 10" type="RigidBody3D" parent="Bowling Pins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0.2, -2)
+
+[node name="bowling_pin" parent="Bowling Pins/Bowling Pin 10" instance=ExtResource("6_qfyl3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bowling Pins/Bowling Pin 10"]
+visible = false
+mesh = SubResource("CylinderMesh_blg2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bowling Pins/Bowling Pin 10"]
+shape = SubResource("CylinderShape3D_ingp2")
+
+[node name="RayCast3D" type="RayCast3D" parent="Bowling Pins/Bowling Pin 10"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.4, 0)
+
+[node name="Layout" type="Node3D" parent="."]
+
+[node name="Main Ground" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107786, 0, -4.68154)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Main Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.25, 0, 0, 4)
+material_override = SubResource("StandardMaterial3D_r7kkm")
+mesh = SubResource("PlaneMesh_gkx18")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Main Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4)
+shape = SubResource("BoxShape3D_h6niq")
+
+[node name="Alley" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wh0fp")
+mesh = SubResource("PlaneMesh_a8whk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_trsr2")
+
+[node name="Right Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.5, -6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1, -4)
+mesh = SubResource("BoxMesh_6omb2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Right Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 1, -4)
+shape = SubResource("BoxShape3D_nrac6")
+
+[node name="Left Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.177, 0.5, -6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, -4)
+mesh = SubResource("BoxMesh_m4521")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Left Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, -4)
+shape = SubResource("BoxShape3D_nrac6")
+
+[node name="Far Back Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878526, 1.50307, -21.9789)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Far Back Wall"]
+mesh = SubResource("BoxMesh_ufqgv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Far Back Wall"]
+shape = SubResource("BoxShape3D_dcwhk")
+
+[node name="Close Back Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0878526, 1.50307, 0.900123)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Close Back Wall"]
+mesh = SubResource("BoxMesh_ufqgv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Close Back Wall"]
+shape = SubResource("BoxShape3D_dcwhk")
+
+[node name="Back Right Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.5, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Back Right Wall"]
+material_override = SubResource("StandardMaterial3D_15p4j")
+mesh = SubResource("BoxMesh_llu5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Back Right Wall"]
+shape = SubResource("BoxShape3D_2qibt")
+
+[node name="Back Left Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.5, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Back Left Wall"]
+material_override = SubResource("StandardMaterial3D_xbw08")
+mesh = SubResource("BoxMesh_jd0rr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Back Left Wall"]
+shape = SubResource("BoxShape3D_2qibt")
+
+[node name="Back Middle Wall" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0283236, 2, -20)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Back Middle Wall"]
+material_override = SubResource("StandardMaterial3D_h67ih")
+mesh = SubResource("BoxMesh_6hebe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Back Middle Wall"]
+shape = SubResource("BoxShape3D_triy6")
+
+[node name="Right Bumper" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1, -11.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Right Bumper"]
+material_override = SubResource("StandardMaterial3D_y5ggy")
+mesh = SubResource("BoxMesh_k83jv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Right Bumper"]
+shape = SubResource("BoxShape3D_mf3yx")
+
+[node name="Left Bumper" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.1, -11.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Left Bumper"]
+material_override = SubResource("StandardMaterial3D_gmll7")
+mesh = SubResource("BoxMesh_k83jv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Left Bumper"]
+shape = SubResource("BoxShape3D_mf3yx")
+
+[node name="Right Edge" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.045, 0, -11.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Right Edge"]
+material_override = SubResource("StandardMaterial3D_xqxy5")
+mesh = SubResource("BoxMesh_n1clv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Right Edge"]
+shape = SubResource("BoxShape3D_7qg1y")
+
+[node name="Left Edge" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.045, 0, -11.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Left Edge"]
+material_override = SubResource("StandardMaterial3D_e4pq7")
+mesh = SubResource("BoxMesh_jylac")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Left Edge"]
+shape = SubResource("BoxShape3D_ee36j")
+
+[node name="Left L Gutter" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -0.877, -0.125, -14.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Left L Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4o0oy")
+mesh = SubResource("PlaneMesh_lx0bk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Left L Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_kef8o")
+
+[node name="Left R Gutter" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.625, -0.15, -14.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Left R Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_txc7u")
+mesh = SubResource("PlaneMesh_ht6f7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Left R Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_gm6me")
+
+[node name="Right L Gutter" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.625, -0.15, -14.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Right L Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hbt4k")
+mesh = SubResource("PlaneMesh_nvk7m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Right L Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_b3umr")
+
+[node name="Right R Gutter" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.877, -0.125, -14.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Right R Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_nkkia")
+mesh = SubResource("PlaneMesh_7vl12")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Right R Gutter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_5adxk")
+
+[node name="Floor Left" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.792, 0, -14.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Floor Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_36gyg")
+mesh = SubResource("PlaneMesh_fs34l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Floor Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_yxptl")
+
+[node name="Floor Right" type="StaticBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.792, 0, -14.18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/Floor Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7nm3d")
+mesh = SubResource("PlaneMesh_1towq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/Floor Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_mnlgx")
+
+[node name="RigidBody3DTest" type="RigidBody3D" parent="Layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503066, -20.2506)
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Layout/RigidBody3DTest"]
+visible = false
+mesh = SubResource("BoxMesh_imjca")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Layout/RigidBody3DTest"]
+shape = SubResource("BoxShape3D_e3hwh")
+
+[connection signal="button_pressed" from="XRUser/XROrigin3D/LeftController" to="XRUser/XROrigin3D/LeftController" method="_on_button_pressed"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/LeftController" to="XRUser/XROrigin3D/LeftController" method="open_menu"]
+[connection signal="button_released" from="XRUser/XROrigin3D/LeftController" to="XRUser/XROrigin3D/LeftController" method="_on_button_released"]
+[connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/BumpersButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="toggle_bumpers"]
+[connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/AllButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="reset_all_button"]
+[connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/PinsButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="reset_pins_button"]
+[connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/BallsButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="reset_balls_button"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="scale_down"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="_on_button_pressed"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="process_input"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="scale_up"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController/LaserPointer" method="_on_controller_button_pressed" binds= [true]]
+[connection signal="button_released" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="_on_button_released"]
+[connection signal="button_released" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController/LaserPointer" method="_on_controller_button_pressed" binds= [false]]
