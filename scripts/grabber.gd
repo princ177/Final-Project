@@ -25,6 +25,8 @@ var grab_status = false
 
 var initial_velocity = 10
 
+var friction = 0.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -35,9 +37,9 @@ func _process(_delta):
 	
 	# Copy the grabber's relative movement since the last frame to to the grabbed object
 	if self.grabbed_object:
-		self.grabbed_object.transform = self.transform #* self.previous_transform.inverse() * self.grabbed_object.transform
+		self.grabbed_object.transform = self.transform * self.previous_transform.inverse() * self.grabbed_object.transform
 
-	#self.previous_transform = self.transform
+	self.previous_transform = self.transform
 
 func process_input(input_name: String):
 	if input_name == "trigger_click" && self.grabbed_object:
@@ -60,6 +62,7 @@ func scale_up(input_name: String):
 			self.grabbed_object.mass += 10
 			object_weight += 10
 			initial_velocity -= 1 
+
 	
 func scale_down(input_name: String):
 	if input_name == "by_button" && self.grabbed_object && to_scale == "size":
@@ -76,12 +79,13 @@ func scale_down(input_name: String):
 			initial_velocity += 1
 
 
+
 func _on_button_pressed(button_name: String) -> void:
 	# Stop if we have not clicked the grip button or we already are grabbing an object
 	if button_name != "grip_click" || self.grabbed_object != null:
 		return
 	
-	initial_velocity = 10
+	#initial_velocity = 10
 	var grabbables = get_tree().get_nodes_in_group("grabbable")
 	var collision_area = $Area3D as Area3D
 
@@ -98,10 +102,6 @@ func _on_button_pressed(button_name: String) -> void:
 					grabber.grabbed_object = null
 					globals.active_grabbers.remove_at(globals.active_grabbers.find(self))
 					break
-			# Freeze the object physics and then grab it
-			print(grabbable_body.rotation_degrees)
-			grabbable_body.rotation_degrees = Vector3(20, 180, 120) 
-			print(grabbable_body.rotation_degrees)
 			grabbable_body.freeze = true
 			self.grabbed_object = grabbable_body
 			globals.active_grabbers.push_back(self)

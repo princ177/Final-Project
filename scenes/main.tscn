@@ -419,6 +419,7 @@ text = "kg"
 
 [node name="XRUser" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.163543)
+collision_layer = 256
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XRUser"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -1000,9 +1001,9 @@ shape = SubResource("BoxShape3D_e3hwh")
 [connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/AllButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="reset_all_button"]
 [connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/PinsButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="reset_pins_button"]
 [connection signal="pressed" from="XRUser/XROrigin3D/LeftController/SpatialMenu/PlaneMesh/SubViewport/CanvasLayer/BallsButton" to="XRUser/XROrigin3D/LeftController/SpatialMenu" method="reset_balls_button"]
+[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="process_input"]
 [connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="scale_down"]
 [connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="_on_button_pressed"]
-[connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="process_input"]
 [connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="scale_up"]
 [connection signal="button_pressed" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController/LaserPointer" method="_on_controller_button_pressed" binds= [true]]
 [connection signal="button_released" from="XRUser/XROrigin3D/RightController" to="XRUser/XROrigin3D/RightController" method="_on_button_released"]
